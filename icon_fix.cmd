@@ -1,3 +1,4 @@
+rem https://zhuanlan.zhihu.com/p/72426926
 rem 关闭 Windows 外壳程序 Explorer
 taskkill /f /im explorer.exe
 rem 清理系统图标缓存数据库
