@@ -1,0 +1,9 @@
+[Unit]
+Description=启动时执行脚本
+
+[Service]
+Type=oneshot
+ExecStart=/bin/sh -c "~/.bootstart/bootstart.sh"
+
+[Install]
+WantedBy=multi-user.target
