@@ -7,7 +7,7 @@ LIVE_BASE_URI="https://live.bilibili.com"
 
 # 0 - flv
 # 1 - ts
-STREAM_TYPE=1
+STREAM_TYPE=0
 
 if [[ -n $1 ]]; then
 	ROOMID=$1
@@ -16,9 +16,15 @@ else
 	exit 0
 fi
 
+if [[ -n $2 ]]; then
+	COOKIE=$2
+else
+	echo "$0 $1 <COOKIE>"
+fi
+
 LIVEURL=$LIVE_BASE_URI/$ROOMID
 
-LIVE_HTML=$(curl -A "$UA" -sL "$LIVEURL")
+LIVE_HTML=$(curl --user-agent "$UA" --cookie $2 -sL "$LIVEURL")
 
 LIVE_INFO_JSON=$(
 	echo $LIVE_HTML |
