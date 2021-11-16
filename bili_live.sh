@@ -9,6 +9,11 @@ LIVE_BASE_URI="https://live.bilibili.com"
 # 1 - ts
 STREAM_TYPE=0
 
+if [[ $1 == "-h" ]]; then
+	echo "$0 <房间ID> [COOKIE]"
+	exit 0
+fi
+
 if [[ -n $1 ]]; then
 	ROOMID=$1
 else
@@ -18,13 +23,13 @@ fi
 
 if [[ -n $2 ]]; then
 	COOKIE=$2
-else
-	echo "$0 $1 <COOKIE>"
 fi
 
-LIVEURL=$LIVE_BASE_URI/$ROOMID
+LIVEURL="$LIVE_BASE_URI/$ROOMID"
 
-LIVE_HTML=$(curl --user-agent "$UA" --cookie $2 -sL "$LIVEURL")
+LIVE_HTML=$(
+	curl -sSL "$LIVEURL" --user-agent "$UA" --cookie "$COOKIE"
+)
 
 LIVE_INFO_JSON=$(
 	echo $LIVE_HTML |
@@ -32,9 +37,21 @@ LIVE_INFO_JSON=$(
 		sed -r "s/.*?__NEPTUNE_IS_MY_WAIFU__=([^<]+).*/\1/g"
 )
 
+if [[ $LIVE_INFO_JSON =~ ^\{.*\}$ ]]; then
+	echo "有效直播间"
+else
+	echo "无效直播间"
+	exit 0
+fi
+
 LIVE_STREAM_URL=$(
 	echo $LIVE_INFO_JSON |
-		jq ".roomInitRes .data .playurl_info .playurl .stream [$STREAM_TYPE] .format [0] .codec [0] | (.url_info [0] | .host) + .base_url + (.url_info [0] | .extra)"
+		jq ".roomInitRes.data.playurl_info.playurl?.stream[$STREAM_TYPE].format[0].codec[0]|(.url_info[0]|.host)+.base_url+(.url_info[0]|.extra)"
 )
+
+if [[ $LIVE_STREAM_URL == "null" ]]; then
+	echo "当前未直播"
+	exit 0
+fi
 
 ffplay ${LIVE_STREAM_URL:1:-1}
