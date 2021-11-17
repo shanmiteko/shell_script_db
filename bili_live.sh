@@ -7,7 +7,7 @@ LIVE_BASE_URI="https://live.bilibili.com"
 
 # 0 - flv
 # 1 - ts
-STREAM_TYPE=0
+STREAM_TYPE=1
 
 if [[ $1 == "-h" ]]; then
 	echo "$0 <房间ID> [COOKIE]"

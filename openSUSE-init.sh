@@ -36,6 +36,13 @@ sudo zypper install \
 	jq \
 	proxychains-ng
 
-# 其他方式
-# clash
+# Oh My Zsh
+# sh -c "$(curl -fsSL https://gitee.com/mirrors/oh-my-zsh/raw/master/tools/install.sh)"
+
+# Clash
 # see https://github.com/Dreamacro/clash/releases
+
+# Rust
+# zypper in rustup
+# rustup-init
+# see https://cargo.budshome.com/reference/source-replacement.html
