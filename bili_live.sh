@@ -55,3 +55,4 @@ if [[ $LIVE_STREAM_URL == "null" ]]; then
 fi
 
 ffplay ${LIVE_STREAM_URL:1:-1}
+# vlc ${LIVE_STREAM_URL:1:-1}

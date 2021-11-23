@@ -30,11 +30,15 @@ sudo zypper dup
 # 使用zypper
 sudo zypper install \
 	zsh \
+	git \
 	wget \
 	code \
 	ripgrep \
 	jq \
 	proxychains-ng
+
+# Git
+# ssh-keygen -C "shanmite@hotmail.com"
 
 # Oh My Zsh
 # sh -c "$(curl -fsSL https://gitee.com/mirrors/oh-my-zsh/raw/master/tools/install.sh)"
