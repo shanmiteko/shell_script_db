@@ -1,0 +1,40 @@
+{
+    "createdBy": "Redirector v3.5.3",
+    "createdAt": "2021-11-23T08:25:21.692Z",
+    "redirects": [
+        {
+            "description": "Ajax",
+            "exampleUrl": "http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js",
+            "exampleResult": "http://ajax.lug.ustc.edu.cn/ajax/libs/jquery/1.7.1/jquery.min.js",
+            "error": null,
+            "includePattern": "*ajax.googleapis.com*",
+            "excludePattern": "",
+            "patternDesc": "",
+            "redirectUrl": "$1ajax.lug.ustc.edu.cn$2",
+            "patternType": "W",
+            "processMatches": "noProcessing",
+            "disabled": false,
+            "grouped": false,
+            "appliesTo": [
+                "script"
+            ]
+        },
+        {
+            "description": "avatar",
+            "exampleUrl": "https://www.gravatar.com/avatar/1f7c2885d44708decaf1cd31c617d4da?s=32&d=identicon&r=PG",
+            "exampleResult": "https://dn-qiniu-avatar.qbox.me/avatar/1f7c2885d44708decaf1cd31c617d4da?s=32&d=identicon&r=PG",
+            "error": null,
+            "includePattern": "*www.gravatar.com*",
+            "excludePattern": "",
+            "patternDesc": "",
+            "redirectUrl": "$1dn-qiniu-avatar.qbox.me$2",
+            "patternType": "W",
+            "processMatches": "noProcessing",
+            "disabled": false,
+            "grouped": false,
+            "appliesTo": [
+                "image"
+            ]
+        }
+    ]
+}
