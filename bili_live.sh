@@ -7,7 +7,7 @@ LIVE_BASE_URI="https://live.bilibili.com"
 
 # 0 - flv
 # 1 - ts
-STREAM_TYPE=1
+STREAM_TYPE=0
 
 if [[ $1 == "-h" ]]; then
 	echo "$0 <房间ID> [COOKIE]"
@@ -54,5 +54,5 @@ if [[ $LIVE_STREAM_URL == "null" ]]; then
 	exit 0
 fi
 
-ffplay ${LIVE_STREAM_URL:1:-1}
-# vlc ${LIVE_STREAM_URL:1:-1}
+# ffplay ${LIVE_STREAM_URL:1:-1}
+vlc ${LIVE_STREAM_URL:1:-1}

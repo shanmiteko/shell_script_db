@@ -1,6 +1,6 @@
 {
     "createdBy": "Redirector v3.5.3",
-    "createdAt": "2021-11-23T08:25:21.692Z",
+    "createdAt": "2021-12-21T12:29:06.826Z",
     "redirects": [
         {
             "description": "Ajax",
@@ -34,6 +34,40 @@
             "grouped": false,
             "appliesTo": [
                 "image"
+            ]
+        },
+        {
+            "description": "github to fastgit",
+            "exampleUrl": "https://github.com/user/repo/",
+            "exampleResult": "https://hub.fastgit.org/user/repo",
+            "error": null,
+            "includePattern": "*github.com/*/*/",
+            "excludePattern": "",
+            "patternDesc": "\"https://github.com/user/repo\" end with '/'",
+            "redirectUrl": "$1hub.fastgit.org/$2/$3",
+            "patternType": "W",
+            "processMatches": "noProcessing",
+            "disabled": false,
+            "grouped": false,
+            "appliesTo": [
+                "main_frame"
+            ]
+        },
+        {
+            "description": "jump to gitpod",
+            "exampleUrl": "https://github.com/user/repo?gitpod",
+            "exampleResult": "https://gitpod.io/#https://github.com/user/repo",
+            "error": null,
+            "includePattern": "https://github.com/*/*?gitpod",
+            "excludePattern": "",
+            "patternDesc": "",
+            "redirectUrl": "https://gitpod.io/#https://github.com/$1/$2",
+            "patternType": "W",
+            "processMatches": "noProcessing",
+            "disabled": false,
+            "grouped": false,
+            "appliesTo": [
+                "main_frame"
             ]
         }
     ]
