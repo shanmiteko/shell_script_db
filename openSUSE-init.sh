@@ -35,7 +35,8 @@ sudo zypper install \
 	code \
 	ripgrep \
 	jq \
-	proxychains-ng
+	proxychains-ng \
+	npm
 
 # Git
 # ssh-keygen -C "shanmite@hotmail.com"
@@ -50,3 +51,6 @@ sudo zypper install \
 # zypper in rustup
 # rustup-init
 # see https://cargo.budshome.com/reference/source-replacement.html
+
+# Nodejs
+# npm config set registry https://registry.npm.taobao.org
