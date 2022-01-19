@@ -6,9 +6,17 @@ domains=(
 	external-content.duckduckgo.com
 	links.duckduckgo.com
 
-	pixiv.net
-	www.pixiv.net
+	nhentai.net
+	static.nhentai.net
+	t2.nhentai.net
+	t5.nhentai.net
+	t7.nhentai.net
+	i.nhentai.net
+	i2.nhentai.net
+	i5.nhentai.net
+	cdnjs.cloudflare.com
 
+	github.com
 	github.githubassets.com
 	central.github.com
 	desktop.githubusercontent.com
@@ -18,7 +26,6 @@ domains=(
 	github.global.ssl.fastly.net
 	gist.github.com
 	github.io
-	github.com
 	api.github.com
 	raw.githubusercontent.com
 	user-images.githubusercontent.com
@@ -31,14 +38,14 @@ domains=(
 	avatars0.githubusercontent.com
 	avatars.githubusercontent.com
 	codeload.github.com
-	github-cloud.s3.amazonaws.com
-	github-com.s3.amazonaws.com
-	github-production-release-asset-2e65be.s3.amazonaws.com
-	github-production-user-asset-6210df.s3.amazonaws.com
-	github-production-repository-file-5c1aeb.s3.amazonaws.com
 	githubstatus.com
 	github.community
 	media.githubusercontent.com
+
+	pixiv.net
+	www.pixiv.net
+
+	wikipedia.org
 )
 
 iplookup() {
