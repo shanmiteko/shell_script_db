@@ -1,6 +1,6 @@
 {
     "createdBy": "Redirector v3.5.3",
-    "createdAt": "2022-01-19T03:04:02.110Z",
+    "createdAt": "2022-01-19T03:33:34.316Z",
     "redirects": [
         {
             "description": "Ajax",
@@ -38,13 +38,30 @@
         },
         {
             "description": "github.com to github.com.cnpmjs.org",
-            "exampleUrl": "https://github.com/user/repo/",
+            "exampleUrl": "https://github.com/user/repo//",
             "exampleResult": "https://github.com.cnpmjs.org/user/repo",
+            "error": null,
+            "includePattern": "*github.com/*/*//",
+            "excludePattern": "",
+            "patternDesc": "\"https://github.com/user/repo\" end with '/'",
+            "redirectUrl": "$1github.com.cnpmjs.org/$2/$3",
+            "patternType": "W",
+            "processMatches": "noProcessing",
+            "disabled": false,
+            "grouped": false,
+            "appliesTo": [
+                "main_frame"
+            ]
+        },
+        {
+            "description": "github.com to hub.fastgit.org",
+            "exampleUrl": "https://github.com/user/repo/",
+            "exampleResult": "https://hub.fastgit.org/user/repo",
             "error": null,
             "includePattern": "*github.com/*/*/",
             "excludePattern": "",
             "patternDesc": "\"https://github.com/user/repo\" end with '/'",
-            "redirectUrl": "$1github.com.cnpmjs.org/$2/$3",
+            "redirectUrl": "$1hub.fastgit.org/$2/$3",
             "patternType": "W",
             "processMatches": "noProcessing",
             "disabled": false,
