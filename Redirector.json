@@ -1,26 +1,45 @@
 {
     "createdBy": "Redirector v3.5.3",
-    "createdAt": "2022-01-19T03:33:34.316Z",
+    "createdAt": "2022-01-19T08:45:40.773Z",
     "redirects": [
         {
-            "description": "Ajax",
+            "description": "ajax.googleapis.com to cdn.bootcdn.net",
             "exampleUrl": "http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js",
-            "exampleResult": "http://ajax.lug.ustc.edu.cn/ajax/libs/jquery/1.7.1/jquery.min.js",
+            "exampleResult": "http://cdn.bootcdn.net/ajax/libs/jquery/1.7.1/jquery.min.js",
             "error": null,
-            "includePattern": "*ajax.googleapis.com*",
+            "includePattern": "*ajax.googleapis.com/ajax/libs/*",
             "excludePattern": "",
             "patternDesc": "",
-            "redirectUrl": "$1ajax.lug.ustc.edu.cn$2",
+            "redirectUrl": "$1cdn.bootcdn.net/ajax/libs/$2",
             "patternType": "W",
             "processMatches": "noProcessing",
             "disabled": false,
             "grouped": false,
             "appliesTo": [
+                "stylesheet",
                 "script"
             ]
         },
         {
-            "description": "avatar",
+            "description": "cdnjs.cloudflare.com to cdn.bootcdn.net",
+            "exampleUrl": "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css",
+            "exampleResult": "https://cdn.bootcdn.net/ajax/libs/font-awesome/5.13.0/css/all.min.css",
+            "error": null,
+            "includePattern": "*cdnjs.cloudflare.com/ajax/libs/*",
+            "excludePattern": "",
+            "patternDesc": "",
+            "redirectUrl": "$1cdn.bootcdn.net/ajax/libs/$2",
+            "patternType": "W",
+            "processMatches": "noProcessing",
+            "disabled": false,
+            "grouped": false,
+            "appliesTo": [
+                "stylesheet",
+                "script"
+            ]
+        },
+        {
+            "description": "gravatar to qiniu-avatar",
             "exampleUrl": "https://www.gravatar.com/avatar/1f7c2885d44708decaf1cd31c617d4da?s=32&d=identicon&r=PG",
             "exampleResult": "https://dn-qiniu-avatar.qbox.me/avatar/1f7c2885d44708decaf1cd31c617d4da?s=32&d=identicon&r=PG",
             "error": null,
