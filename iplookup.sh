@@ -6,6 +6,9 @@ domains=(
 	external-content.duckduckgo.com
 	links.duckduckgo.com
 
+	pixiv.net
+	www.pixiv.net
+
 	github.githubassets.com
 	central.github.com
 	desktop.githubusercontent.com
