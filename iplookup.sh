@@ -2,8 +2,6 @@
 hosts=/etc/hosts
 
 domains=(
-	ajax.googleapis.com
-
 	duckduckgo.com
 	external-content.duckduckgo.com
 	links.duckduckgo.com
@@ -56,9 +54,7 @@ IpAddress+="# Auto Generate on $(date)\n$(
 	wait
 )\n# Auto Generate on $(date)\n"
 
-printf "ok\n"
-
-printf "edit hosts ..."
+printf "ok\nedit hosts ..."
 
 if [ "$EUID" -ne 0 ]; then
 	printf "error\n$IpAddress\nPlease run as root"
