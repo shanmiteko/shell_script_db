@@ -1,9 +1,9 @@
-# VirtualBoxËùÔÚÄ¿Â¼
+# VirtualBoxæ‰€åœ¨ç›®å½•
 $VBOX = "D:\VirtualBox"
-# ĞéÄâ»úÃû
+# è™šæ‹Ÿæœºå
 $VM = "openSUSE"
 
-####################################Òş²Ø×ÔÉí####################################
+####################################éšè—è‡ªèº«####################################
 # http://blog.vichamp.com/2017/02/27/show-or-hide-windows/
 # requires -Version 5
 # this enum works in PowerShell 5 only
@@ -13,18 +13,18 @@ $VM = "openSUSE"
 
 Enum ShowStates
 {
-  Hide = 0
-  Normal = 1
-  Minimized = 2
-  Maximized = 3
-  ShowNoActivateRecentPosition = 4
-  Show = 5
-  MinimizeActivateNext = 6
-  MinimizeNoActivate = 7
-  ShowNoActivate = 8
-  Restore = 9
-  ShowDefault = 10
-  ForceMinimize = 11
+    Hide = 0
+    Normal = 1
+    Minimized = 2
+    Maximized = 3
+    ShowNoActivateRecentPosition = 4
+    Show = 5
+    MinimizeActivateNext = 6
+    MinimizeNoActivate = 7
+    ShowNoActivate = 8
+    Restore = 9
+    ShowDefault = 10
+    ForceMinimize = 11
 }
 
 
@@ -45,40 +45,40 @@ $hwnd = $process.MainWindowHandle
 
 # apply a new window size to the handle, i.e. hide the window completely
 $type::ShowWindowAsync($hwnd, [ShowStates]::Minimized)
-####################################Òş²Ø×ÔÉí####################################
+####################################éšè—è‡ªèº«####################################
 
-####################################Æô¶¯VBox####################################
+####################################å¯åŠ¨VBox####################################
 Add-Type -AssemblyName PresentationCore,PresentationFramework
 
 try {
     $VMs = Invoke-Expression "$VBOX\VBoxManage list vms"
     $RVMs = Invoke-Expression "$VBOX\VBoxManage list runningvms"
 } catch {
-    [void] [System.Windows.MessageBox]::Show( "Î´ÕÒµ½VirtualBox", "Æô¶¯VBox·¢Éú´íÎó", "OK", "Error" )
+    [void] [System.Windows.MessageBox]::Show( "æœªæ‰¾åˆ°VirtualBox", "å¯åŠ¨VBoxå‘ç”Ÿé”™è¯¯", "OK", "Error" )
     Exit
 }
 
 if($VMs.Contains($VM)) {
     if(!$RVMs -or !$RVMs.Contains($VM)) {
-        $OPT = [Int] [System.Windows.MessageBox]::Show( "¼´½«Æô¶¯ÎŞ½çÃæVBoxĞéÄâ»ú-$VM", "Æô¶¯ĞéÄâ»ú", "OKCancel", "Info" )
+        $OPT = [Int] [System.Windows.MessageBox]::Show( "å³å°†å¯åŠ¨æ— ç•Œé¢VBoxè™šæ‹Ÿæœº-$VM", "å¯åŠ¨è™šæ‹Ÿæœº", "OKCancel", "Info" )
         switch($OPT){
             1 {
                 $Result = Invoke-Expression "$VBOX\VBoxManage startvm $VM -type headless"
-                [void] [System.Windows.MessageBox]::Show( "³É¹¦Æô¶¯", "VBox", "OK", "Info" )
+                [void] [System.Windows.MessageBox]::Show( "æˆåŠŸå¯åŠ¨", "VBox", "OK", "Info" )
             }
             2 {}
         }
     } else {
-        $OPT = [Int] [System.Windows.MessageBox]::Show( "ÎŞ½çÃæVBoxĞéÄâ»ú-${VM}ÕıÔÚÔËĞĞ,ÊÇ·ñ¹Ø±ÕËü", "VBox", "OKCancel", "Info" )
+        $OPT = [Int] [System.Windows.MessageBox]::Show( "æ— ç•Œé¢VBoxè™šæ‹Ÿæœº-${VM}æ­£åœ¨è¿è¡Œ,æ˜¯å¦å…³é—­å®ƒ", "VBox", "OKCancel", "Info" )
         switch($OPT){
             1 {
                 $Result = Invoke-Expression "$VBOX\VBoxManage controlvm $VM poweroff"
-                [void] [System.Windows.MessageBox]::Show( "³É¹¦¹Ø±Õ", "VBox", "OK", "Info" )
+                [void] [System.Windows.MessageBox]::Show( "æˆåŠŸå…³é—­", "VBox", "OK", "Info" )
             }
             2 {}
         }
     }
 } else {
-    [void] [System.Windows.MessageBox]::Show( "Î´ÕÒµ½ĞéÄâ»ú-$VM", "Æô¶¯ĞéÄâ»ú´íÎó", "OK", "Error" )
+    [void] [System.Windows.MessageBox]::Show( "æœªæ‰¾åˆ°è™šæ‹Ÿæœº-$VM", "å¯åŠ¨è™šæ‹Ÿæœºé”™è¯¯", "OK", "Error" )
 }
-####################################Æô¶¯VBox####################################
+####################################å¯åŠ¨VBox####################################
