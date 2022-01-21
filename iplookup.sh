@@ -3,6 +3,7 @@ hosts=/etc/hosts
 
 domains=(
 	duckduckgo.com
+	duck.com
 	external-content.duckduckgo.com
 	links.duckduckgo.com
 
