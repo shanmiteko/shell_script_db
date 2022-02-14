@@ -43,6 +43,9 @@ domains=(
 	github.community
 	media.githubusercontent.com
 
+	heroku.com
+	id.heroku.com
+
 	pixiv.net
 	www.pixiv.net
 
