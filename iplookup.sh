@@ -45,6 +45,7 @@ domains=(
 
 	heroku.com
 	id.heroku.com
+	dashboard.heroku.com
 
 	pixiv.net
 	www.pixiv.net
@@ -62,7 +63,12 @@ printf "lookup ipaddress from https://www.ipaddress.com/ip-lookup ..."
 IpAddress+="# Auto Generate on $(date)\n$(
 	for domain in "${domains[@]}"; do
 		{
-			printf "$(iplookup $domain)	$domain\n"
+			ipaddress=$(iplookup $domain)
+			if [[ -n "$ipaddress" ]]; then
+				printf "$ipaddress	$domain\n"
+			else
+				printf "# $domain not found!\n"
+			fi
 		} &
 	done
 	wait
@@ -71,7 +77,7 @@ IpAddress+="# Auto Generate on $(date)\n$(
 printf "ok\nedit hosts ..."
 
 if [ "$EUID" -ne 0 ]; then
-	printf "error\n$IpAddress\nPlease run as root"
+	printf "error\nwill write\n$IpAddress\nPlease run as root"
 else
 	sed -i '/^# Auto Generate.*/,/&/d' $hosts
 	printf "$IpAddress" >>$hosts
