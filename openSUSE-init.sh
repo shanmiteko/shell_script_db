@@ -38,6 +38,9 @@ sudo zypper install \
 	proxychains-ng \
 	npm
 
+# C/C++
+sudo zypper install -t pattern devel_C_C++
+
 # Git
 # ssh-keygen -C "shanmite@hotmail.com"
 

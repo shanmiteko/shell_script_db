@@ -51,6 +51,8 @@ domains=(
 	www.pixiv.net
 
 	wikipedia.org
+	en.wikipedia.org
+	zh.wikipedia.org
 )
 
 iplookup() {
