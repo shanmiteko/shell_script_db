@@ -57,3 +57,5 @@ sudo zypper install -t pattern devel_C_C++
 
 # Nodejs
 # npm config set registry https://registry.npm.taobao.org
+
+mkdir ~/logs
