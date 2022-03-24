@@ -31,7 +31,7 @@ sudo zypper dup
 sudo zypper install \
 	zsh \
 	git \
-	wget \
+	axel \
 	code \
 	ripgrep \
 	jq \
