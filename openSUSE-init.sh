@@ -59,3 +59,5 @@ sudo zypper install -t pattern devel_C_C++
 # npm config set registry https://registry.npm.taobao.org
 
 mkdir ~/logs
+printf "@reboot find ~/.cache/ -depth -type f -atime +60 > ~/logs/cache_clear.log 2>&1 && find ~/.cache -depth -type f -mtime +60 -delete
+@reboot sudo zypper ref && sudo zypper dup -y > ~/logs/zypper_dup.log 2>&1\n" | crontab -
