@@ -43,6 +43,9 @@ domains=(
 	github.community
 	media.githubusercontent.com
 
+	live.com
+	onedrive.live.com
+	
 	heroku.com
 	id.heroku.com
 	dashboard.heroku.com

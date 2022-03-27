@@ -36,7 +36,8 @@ sudo zypper install \
 	ripgrep \
 	jq \
 	proxychains-ng \
-	npm
+	npm \
+	clash
 
 # C/C++
 sudo zypper install -t pattern devel_C_C++
@@ -45,7 +46,8 @@ sudo zypper install -t pattern devel_C_C++
 # ssh-keygen -C "shanmite@hotmail.com"
 
 # Oh My Zsh
-# sh -c "$(curl -fsSL https://gitee.com/mirrors/oh-my-zsh/raw/master/tools/install.sh)"
+chsh -s $(which zsh)
+sh -c "$(curl -fsSL https://gitee.com/mirrors/oh-my-zsh/raw/master/tools/install.sh)"
 
 # Clash
 # see https://github.com/Dreamacro/clash/releases
