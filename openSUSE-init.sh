@@ -60,6 +60,9 @@ sh -c "$(curl -fsSL https://gitee.com/mirrors/oh-my-zsh/raw/master/tools/install
 # Nodejs
 # npm config set registry https://registry.npm.taobao.org
 
+# python3
+# pip config set global.index-url https://pypi.mirrors.ustc.edu.cn/simple/
+
 mkdir ~/logs
 printf "@reboot sleep 30 && (date; find ~/.cache/ -depth -type f -atime +60) > ~/logs/cache_clear.log 2>&1 && find ~/.cache -depth -type f -mtime +60 -delete
 @reboot sleep 30 && (date; sudo zypper ref; sudo zypper dup -y) > ~/logs/zypper_dup.log 2>&1
