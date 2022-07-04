@@ -39,6 +39,9 @@ sudo zypper install \
 	npm \
 	clash
 
+# Font
+# https://github.com/tonsky/FiraCode/releases
+
 # C/C++
 sudo zypper install -t pattern devel_C_C++
 
