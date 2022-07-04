@@ -1,2 +1,0 @@
-@reboot sleep 10 && (date; find ~/.cache/ -depth -type f -atime +60) > /tmp/cache_clear.log 2>&1 && find ~/.cache -depth -type f -mtime +60 -delete
-@reboot sleep 30 && (date; sudo zypper ref; sudo zypper dup -y; rustup update) > ~/tmp/all_update.log 2>&1
