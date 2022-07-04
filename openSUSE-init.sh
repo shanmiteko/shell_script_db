@@ -43,11 +43,13 @@ sudo zypper install \
 sudo zypper install -t pattern devel_C_C++
 
 # Git
-# ssh-keygen -C "shanmite@hotmail.com"
+ssh-keygen -C "shanmite@hotmail.com"
 
 # Oh My Zsh
-chsh -s $(which zsh)
-sh -c "$(curl -fsSL https://gitee.com/mirrors/oh-my-zsh/raw/master/tools/install.sh)"
+# chsh -s $(which zsh)
+# sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+# git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+# git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 
 # Clash
 # see https://github.com/Dreamacro/clash/releases
