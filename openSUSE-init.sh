@@ -59,14 +59,25 @@ ssh-keygen -C "shanmite@hotmail.com"
 
 # Rust
 # zypper in rustup
-# rustup-init
-# see https://cargo.budshome.com/reference/source-replacement.html
+# rustup toolchain install nightly
+# vim ~/.cargo/config.toml
+# [source.crates-io]
+# registry = "https://github.com/rust-lang/crates.io-index"
+# replace-with = 'ustc'
+# 
+# [source.ustc]
+# registry = "https://mirrors.ustc.edu.cn/crates.io-index"
 
 # Nodejs
 # npm config set registry https://registry.npm.taobao.org
 
 # python3
 # pip config set global.index-url https://pypi.mirrors.ustc.edu.cn/simple/
+
+# podman
+# sudo zypper in podman
+# sudo vim /etc/containers/registries.conf
+# -> "docker.mirrors.ustc.edu.cn"
 
 mkdir ~/logs
 printf "@reboot sleep 10 && (date; find ~/.cache/ -depth -type f -atime +60) > ~/logs/cache_clear.log 2>&1 && find ~/.cache -depth -type f -mtime +60 -delete

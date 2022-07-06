@@ -1,0 +1,24 @@
+#!/bin/env bash
+
+# https://stackoverflow.com/a/28971413
+# http://fabiorehm.com/blog/2014/09/11/running-gui-apps-with-docker/
+
+# https://scripter.co/check-if-a-command-exists-from-shell-script/
+
+# https://unix.stackexchange.com/a/370919
+# https://tldp.org/LDP/abs/html/bashver3.html#REGEXMATCHREF
+
+
+if ! hash xhost; then
+	echo "install xhost ..."
+	sudo zypper in xhost
+fi
+
+if [[ "$(xhost)" =~ "enabled" ]]; then
+	xhost +
+fi
+
+podman run -ti --rm \
+       -e DISPLAY=$DISPLAY \
+       -v /tmp/.X11-unix:/tmp/.X11-unix \
+       xclock
