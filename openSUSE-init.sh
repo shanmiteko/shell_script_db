@@ -81,5 +81,5 @@ ssh-keygen -C "shanmite@hotmail.com"
 
 mkdir ~/logs
 printf "@reboot sleep 10 && (date; find ~/.cache/ -depth -type f -atime +60) > ~/logs/cache_clear.log 2>&1 && find ~/.cache -depth -type f -mtime +60 -delete
-@reboot sleep 30 && (date; sudo zypper ref; sudo zypper dup -y) > ~/logs/zypper_dup.log 2>&1
-" | crontab -
+@reboot sleep 10 && (date; sudo journalctl --vacuum-time=7d) > ~/logs/journalctl_clear.log 2>&1
+@reboot sleep 30 && (date; sudo zypper ref; sudo zypper dup -y) > ~/logs/zypper_dup.log 2>&1" | crontab -
