@@ -36,6 +36,7 @@ podman run -it \
 	--rm \
 	sandbox \
 	$1
+
 # 测试pulseaudio
 # pacat -v /dev/urandom
 
