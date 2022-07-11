@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# echo "$(whoami) ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/developer
+# chmod 0440 /etc/sudoers.d/$(whoami)
+
 # openSUSE Tumbleweed
 
 # 禁用官方源
@@ -28,7 +31,7 @@ sudo zypper dup
 
 # 常用软件
 # 使用zypper
-sudo zypper install \
+sudo zypper install -y \
 	zsh \
 	git \
 	axel \
@@ -37,7 +40,8 @@ sudo zypper install \
 	jq \
 	proxychains-ng \
 	npm \
-	clash
+	clash \
+	tmux
 
 # Font
 # https://github.com/tonsky/FiraCode/releases
@@ -80,6 +84,6 @@ ssh-keygen -C "shanmite@hotmail.com"
 # -> "docker.mirrors.ustc.edu.cn"
 
 mkdir ~/logs
-printf "@reboot sleep 10 && (date; find ~/.cache/ -depth -type f -atime +60) > ~/logs/cache_clear.log 2>&1 && find ~/.cache -depth -type f -mtime +60 -delete
-@reboot sleep 10 && (date; sudo journalctl --vacuum-time=7d) > ~/logs/journalctl_clear.log 2>&1
+printf "@reboot sleep 10 && (date; find ~/.cache/ -depth -type f -atime +15) > ~/logs/cache_clear.log 2>&1 && find ~/.cache -depth -type f -mtime +15 -delete
+@reboot sleep 10 && (date; sudo journalctl --vacuum-time=3d) > ~/logs/journalctl_clear.log 2>&1
 @reboot sleep 30 && (date; sudo zypper ref; sudo zypper dup -y) > ~/logs/zypper_dup.log 2>&1" | crontab -
