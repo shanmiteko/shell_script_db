@@ -2,7 +2,6 @@
 
 X11_SOCKET=/tmp/.X11-unix
 PA_SOCKET=/tmp/pulseaudio.socket
-PA_COOKIE=/tmp/pulseaudio.cookie
 
 # 安装xhost管理X server连接权限
 if ! hash xhost; then
@@ -15,30 +14,31 @@ if [[ "$(xhost)" =~ "enabled" ]]; then
         xhost +
 fi
 
-# 生成一组pulseaudio socket和cookie
+# 生成pulseaudio socket
 # $ pacmd describe-module module-native-protocol-unix
 if [ ! -S $PA_SOCKET ] || [ ! -f $PA_COOKIE ]; then
 	pacmd load-module module-native-protocol-unix \
 		socket=$PA_SOCKET \
-		auth-cookie=$PA_COOKIE
+		auth-cookie-enabled=0
 fi
 
 podman run -it \
 	--network=host \
 	-e DISPLAY=$DISPLAY \
-	-e PULSE_SERVER=$PA_SOCKET \
-	-e PULSE_COOKIE=$PA_COOKIE \
-	-v $X11_SOCKET:$X11_SOCKET \
-	-v $PA_SOCKET:$PA_SOCKET \
-	-v $PA_COOKIE:$PA_COOKIE:ro \
-	-v $PWD:/tmp/sandbox:ro \
+	-v $X11_SOCKET:$X11_SOCKET:ro \
+	-v $PA_SOCKET:$PA_SOCKET:ro \
+	-v $PWD:/ro/sandbox:ro \
 	--device /dev/dri \
+	--device /dev/vga_arbiter \
 	--rm \
 	sandbox \
-	$1
+	"$1"
+
+# 测试X server
+# sandbox "glxgears -info"
 
 # 测试pulseaudio
-# pacat -v /dev/urandom
+# sandbox "pacat -v /dev/urandom"
 
 # 参考:
 # https://github.com/mviereck/x11docker
