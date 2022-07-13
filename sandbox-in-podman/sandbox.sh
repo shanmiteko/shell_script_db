@@ -19,7 +19,7 @@ fi
 if [ ! -S $PA_SOCKET ] || [ ! -f $PA_COOKIE ]; then
 	pacmd load-module module-native-protocol-unix \
 		socket=$PA_SOCKET \
-		auth-cookie-enabled=0
+		auth-anonymous=1
 fi
 
 podman run -it \
@@ -30,6 +30,7 @@ podman run -it \
 	-v $PWD:/ro/sandbox:ro \
 	--device /dev/dri \
 	--device /dev/vga_arbiter \
+	--device /dev/snd \
 	--rm \
 	sandbox \
 	"$1"

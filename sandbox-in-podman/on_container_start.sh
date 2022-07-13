@@ -1,10 +1,13 @@
 #!/bin/bash
 
-READONLYDIR=sandbox
+COMMAND="$1"
+MOUNT_DIR=sandbox
 
-if [ -d "/ro/$READONLYDIR" ]; then
-	cp /ro/$READONLYDIR / -r
-	cd /$READONLYDIR
+if [ -d "/ro/$MOUNT_DIR" ]; then
+	cp /ro/$MOUNT_DIR ~ -r
+	sudo chown -R $(id -u):$(id -g) ~/$MOUNT_DIR
+	cd ~/$MOUNT_DIR
 fi
 
-bash -c "$1"
+[ -z "$COMMAND" ] && COMMAND=bash
+bash -c "$COMMAND"
