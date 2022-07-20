@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
-# echo "$(whoami) ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/developer
-# chmod 0440 /etc/sudoers.d/$(whoami)
+# sudo no password
+echo "$(whoami) ALL=(ALL) NOPASSWD: ALL" | sudo tee /etc/sudoers.d/$(whoami)
+sudo chmod 0440 /etc/sudoers.d/$(whoami)
 
 # openSUSE Tumbleweed
-
 # 禁用官方源
 sudo zypper mr -da
 
@@ -27,7 +27,7 @@ sudo zypper refresh
 
 # 发行版升级
 sudo zypper dist-upgrade --from packman --allow-vendor-change
-sudo zypper dup
+sudo zypper dup --no-recommends
 
 # 常用软件
 # 使用zypper
@@ -53,7 +53,7 @@ sudo zypper install -t pattern devel_C_C++
 ssh-keygen -C "shanmite@hotmail.com"
 
 # Oh My Zsh
-# chsh -s $(which zsh)
+## chsh -s $(which zsh)
 # sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 # git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 # git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
@@ -64,6 +64,7 @@ ssh-keygen -C "shanmite@hotmail.com"
 # Rust
 # zypper in rustup
 # rustup toolchain install nightly
+# mkdir ~/.cargo
 # vim ~/.cargo/config.toml
 # [source.crates-io]
 # registry = "https://github.com/rust-lang/crates.io-index"
@@ -83,7 +84,9 @@ ssh-keygen -C "shanmite@hotmail.com"
 # sudo vim /etc/containers/registries.conf
 # -> "docker.mirrors.ustc.edu.cn"
 
+sudo systemctl enable tlp.service
+
 mkdir ~/logs
-printf "@reboot sleep 10 && (date; find ~/.cache/ -depth -type f -atime +15) > ~/logs/cache_clear.log 2>&1 && find ~/.cache -depth -type f -mtime +15 -delete
+printf "@reboot sleep 10 && (date; find ~/.cache/ -depth -type f -atime +7) > ~/logs/cache_clear.log 2>&1 && find ~/.cache -depth -type f -mtime +7 -delete
 @reboot sleep 10 && (date; sudo journalctl --vacuum-time=3d) > ~/logs/journalctl_clear.log 2>&1
-@reboot sleep 30 && (date; sudo zypper ref; sudo zypper dup -y) > ~/logs/zypper_dup.log 2>&1" | crontab -
+@reboot sleep 30 && (date; sudo zypper ref; sudo zypper dup -y) > ~/logs/zypper_dup.log 2>&1"
