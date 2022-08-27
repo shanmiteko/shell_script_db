@@ -47,7 +47,7 @@ fi
 
 LIVE_STREAM_URL=$(
 	echo $LIVE_INFO_JSON |
-		jq ".roomInitRes.data.playurl_info.playurl?.stream[$STREAM_TYPE].format[0].codec[0]|(.url_info[0]|.host)+.base_url+(.url_info[0]|.extra)"
+		jq -r ".roomInitRes.data.playurl_info.playurl?.stream[$STREAM_TYPE].format[0].codec[0]|(.url_info[0]|.host)+.base_url+(.url_info[0]|.extra)"
 )
 
 if [[ $LIVE_STREAM_URL == "null" ]]; then
@@ -55,5 +55,5 @@ if [[ $LIVE_STREAM_URL == "null" ]]; then
 	exit 0
 fi
 
-# ffplay ${LIVE_STREAM_URL:1:-1}
-vlc ${LIVE_STREAM_URL:1:-1}
+ffplay "$LIVE_STREAM_URL"
+# cvlc "$LIVE_STREAM_URL"
