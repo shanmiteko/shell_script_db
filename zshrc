@@ -12,6 +12,11 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
+export PATH=$PATH:$HOME/.cargo/bin
+export GCC_INCLUDE="/usr/lib64/gcc/x86_64-suse-linux/12/include/"
+
+export RUSTUP_DIST_SERVER=https://mirrors.tuna.tsinghua.edu.cn/rustup
+
 export CLASH_HOME="$HOME/bin/.clash"
 export NODE_PATH="/usr/local/lib/node_modules"
 export GOPROXY="https://goproxy.cn"
@@ -21,8 +26,11 @@ alias zshrc="vim $HOME/.zshrc && source $HOME/.zshrc"
 alias pc="proxychains4"
 alias rgf="rg --files --no-ignore | rg"
 
+alias docker=podman
 alias pmls="podman image list && podman image list --all && podman container list && podman container list --all"
 alias pmr="podman run -it --rm"
+
+alias lynx=lynx-color
 
 alias zypper="sudo zypper"
 alias dup="zypper ref && zypper dup --no-recommends"
@@ -60,4 +68,8 @@ function iplookup() {
                 -X POST \
                 -H 'Referer: https://www.ipaddress.com/ip-lookup' \
                 --data-raw "host=$1" | perl -e 'while(<>){/https:\/\/www.ipaddress.com\/ipv4\/((\d+\.){3}\d+)/;if($1){print($1);last}}'
+}
+
+function youdao() {
+	lynx "https://dict.youdao.com/w/$1"
 }
