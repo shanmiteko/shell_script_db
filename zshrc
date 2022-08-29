@@ -34,7 +34,6 @@ alias lynx=lynx-color
 
 alias zypper="sudo zypper"
 alias dup="zypper ref && zypper dup --no-recommends"
-alias zin="zypper in --no-recommends"
 alias zrm="zypper remove --clean-deps"
 alias zse="zypper search"
 
@@ -54,8 +53,7 @@ function help() {
 }
 
 function toggle_lan() {
-        if [[ $LANG != "en_US.UTF-8" ]]
-        then
+        if [[ $LANG != "en_US.UTF-8" ]]; then
                 export LANG=en_US.UTF-8
         else
                 export LANG=zh_CN.UTF-8
@@ -71,5 +69,27 @@ function iplookup() {
 }
 
 function youdao() {
-	lynx "https://dict.youdao.com/w/$1"
+        lynx "https://dict.youdao.com/w/$1"
+}
+
+function zin() {
+        tmp_zypp_cache=/tmp/zypp-cache/$1
+        mkdir -p $tmp_zypp_cache
+        sudo zypper --pkg-cache-dir $tmp_zypp_cache install -yfd --no-recommends "$1"
+	printf "inspect? [y/n] (y) "
+        read insp
+        case "${insp}" in
+        "" | "y")
+                rpm -qlp $tmp_zypp_cache/**/*.rpm
+                ;;
+        *) ;;
+        esac
+	printf "install? [y/n] (y) "
+        read inst
+        case "${inst}" in
+        "" | "y")
+                sudo zypper --pkg-cache-dir $tmp_zypp_cache install -yf --no-recommends "$1"
+                ;;
+        *) ;;
+        esac
 }
