@@ -76,7 +76,7 @@ function zin() {
         tmp_zypp_cache=/tmp/zypp-cache/$1
         mkdir -p $tmp_zypp_cache
         sudo zypper --pkg-cache-dir $tmp_zypp_cache install -yfd --no-recommends "$1"
-	printf "inspect? [y/n] (y) "
+	printf "examine? [y/n] (y) "
         read insp
         case "${insp}" in
         "" | "y")
