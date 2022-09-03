@@ -174,6 +174,7 @@ function vlc_play() {
 		;;
 	esac
 
+	rm "$1.m3u8"
 }
 
 function refresh_token() {

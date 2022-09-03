@@ -68,8 +68,22 @@ function iplookup() {
                 --data-raw "host=$1" | perl -e 'while(<>){/https:\/\/www.ipaddress.com\/ipv4\/((\d+\.){3}\d+)/;if($1){print($1);last}}'
 }
 
-function youdao() {
-        lynx "https://dict.youdao.com/w/$1"
+function whatmeans() {
+	printf "y)oudao q)uword: (q) "
+	read dict
+	case "$dict" in
+	"y")
+		dict_url="https://dict.youdao.com/w/$1"
+		curl -sL "$dict_url" | htmlq "#results-contents" | lynx -stdin
+		;;
+	"q" | "")
+		dict_url="https://www.quword.com/w/$1"
+		curl -sL "$dict_url" | htmlq "#yd-content" | lynx -stdin
+		;;
+	*)
+		return
+		;;
+	esac
 }
 
 function zin() {
