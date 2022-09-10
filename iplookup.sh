@@ -3,6 +3,7 @@ hosts=/etc/hosts
 
 domains=(
 	duckduckgo.com
+	lite.duckduckgo.com
 	duck.com
 	external-content.duckduckgo.com
 	links.duckduckgo.com
@@ -59,7 +60,8 @@ domains=(
 )
 
 iplookup() {
-	curl -sd "host=$1" https://www.ipaddress.com/ip-lookup |
+	curl -sd "host=$1" https://www.ipaddress.com/ip-lookup \
+		-H 'Referer: https://www.ipaddress.com/ip-lookup' |
 		perl -e 'while(<>){/https:\/\/www.ipaddress.com\/ipv4\/((\d+\.){3}\d+)/;if($1){print($1);last}}'
 }
 

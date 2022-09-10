@@ -1,4 +1,4 @@
-FROM leap:15.3
+FROM leap:15.4
 
 RUN zypper mr -da \
 && zypper ar -cfg 'https://mirrors.tuna.tsinghua.edu.cn/opensuse/distribution/leap/$releasever/repo/oss/' tuna-oss \
