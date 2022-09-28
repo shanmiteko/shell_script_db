@@ -4,7 +4,8 @@ RUN zypper mr -da \
 && zypper ar -cfg 'https://mirrors.tuna.tsinghua.edu.cn/opensuse/distribution/leap/$releasever/repo/oss/' tuna-oss \
 && zypper ar -cfg 'https://mirrors.tuna.tsinghua.edu.cn/opensuse/distribution/leap/$releasever/repo/non-oss/' tuna-non-oss \
 && zypper up \
-&& zypper install -y sudo Mesa Mesa-demo-x libXcursor1 libXrandr2 pulseaudio-utils
+&& zypper install -y sudo Mesa Mesa-demo-x libXcursor1 libXrandr2 pulseaudio-utils \
+&& zypper clean
 
 ARG UID
 ARG GID

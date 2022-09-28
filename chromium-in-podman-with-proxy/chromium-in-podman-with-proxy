@@ -29,20 +29,9 @@ podman run -it \
 	-v $X11_SOCKET:$X11_SOCKET:ro \
 	-v $PA_SOCKET:$PA_SOCKET:ro \
 	-v $FONTS:$FONTS:ro \
-	-v $PWD:/ro/sandbox:ro \
 	--device /dev/dri \
 	--device /dev/vga_arbiter \
 	--device /dev/snd \
 	--rm \
-	sandbox \
+	chromium-with-proxy \
 	"$1"
-
-# 测试X server
-# sandbox "glxgears -info"
-
-# 测试pulseaudio
-# sandbox "pacat -v /dev/urandom"
-
-# 参考:
-# https://github.com/mviereck/x11docker
-# https://github.com/mviereck/x11docker/wiki/Container-sound:-ALSA-or-Pulseaudio#pulseaudio-with-shared-socket

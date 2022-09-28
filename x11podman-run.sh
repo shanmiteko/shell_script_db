@@ -29,13 +29,12 @@ podman run -it \
 	-v $X11_SOCKET:$X11_SOCKET:ro \
 	-v $PA_SOCKET:$PA_SOCKET:ro \
 	-v $FONTS:$FONTS:ro \
-	-v $PWD:/ro/sandbox:ro \
 	--device /dev/dri \
 	--device /dev/vga_arbiter \
 	--device /dev/snd \
 	--rm \
-	sandbox \
-	"$1"
+	"$1" \
+	"$2"
 
 # 测试X server
 # sandbox "glxgears -info"
