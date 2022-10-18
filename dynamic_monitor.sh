@@ -2,7 +2,7 @@
 
 while true; do
 	update_num=$(curl -sL 'https://api.bilibili.com/x/polymer/web-dynamic/v1/feed/all/update?type=all&update_baseline=0' \
-		-H $'Cookie: SESSDATA=739c614e%2C1673441995%2Caf361*71;' |
+		-H $'Cookie: SESSDATA=;' |
 		jq '.data.update_num')
 
 	if [[ $update_num != "" ]] && [[ $update_num != "0" ]]; then
