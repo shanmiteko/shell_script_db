@@ -1,7 +1,10 @@
 #!/bin/env bash
+set -e
 
-# var
-CARD=wlp1s0
+# vard
+ip a
+echo ""
+read -p "which card? " card
 
 read -p "dump|end|quit? " answer
 case "${answer}" in
@@ -9,20 +12,20 @@ dump)
     # start
     sudo systemctl stop NetworkManager.service
 
-    sudo ip link set $CARD down
+    sudo ip link set $card down
 
-    sudo iwconfig $CARD mode Monitor
+    sudo iwconfig $card mode Monitor
 
     # dump
-    sudo airodump-ng $CARD
+    sudo airodump-ng $card
     
     read -p "bssid? " bssid
     read -p "channel? " channel
 
     sudo airodump-ng --channel $channel \
 	    --bssid $bssid \
-	    $CARD \
-	    -w $CARD-$bssid-$channel
+	    $card \
+	    -w $card-$bssid-$channel
 
     # hack
     #
@@ -60,9 +63,9 @@ dump)
     ;;
 end)
     # end
-    sudo ip link set $CARD down
+    sudo ip link set $card down
 
-    sudo iwconfig $CARD mode Managed
+    sudo iwconfig $card mode Managed
 
     sudo systemctl restart NetworkManager.service
     ;;
