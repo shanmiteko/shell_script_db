@@ -1,0 +1,3 @@
+[submodule "wifi/QCA9377"]
+	path = wifi/QCA9377
+	url = https://github.com/ahmedmadder1/airodump-ng-not-showing-any-data-Atheros-QCA9377-.git
